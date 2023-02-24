@@ -1,4 +1,6 @@
-# A Study with real time gestures
+# A study with real time gestures
+
+## Work in progress...
 
 ## Usage
 
