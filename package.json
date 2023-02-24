@@ -1,23 +1,21 @@
 {
   "name": "real-time-gestures-study",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A study about controlling a website with hand gestures",
   "scripts": {
-    "start": "npx browser-sync start --server --files src/js/*.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "tsc && vite build --base=/estudo/real-time-gestures/",
+    "preview": "vite preview",
+    "fast-push": "yarn build && git add . && git commit -m '.' && git push"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/daniofilho/real-time-gestures-study.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/daniofilho/real-time-gestures-study/issues"
+  "dependencies": {
+    "fingerpose": "^0.1.0"
   },
-  "homepage": "https://github.com/daniofilho/real-time-gestures-study#readme",
   "devDependencies": {
-    "browser-sync": "^2.27.12"
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
   }
 }

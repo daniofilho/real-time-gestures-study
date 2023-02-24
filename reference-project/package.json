@@ -1,0 +1,23 @@
+{
+  "name": "real-time-gestures-study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx browser-sync start --server --files src/js/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniofilho/real-time-gestures-study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daniofilho/real-time-gestures-study/issues"
+  },
+  "homepage": "https://github.com/daniofilho/real-time-gestures-study#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.12"
+  }
+}
