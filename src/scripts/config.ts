@@ -1,12 +1,12 @@
 const config = {
   fps: 30,
   canvas: {
-    width: 640,
-    height: 480,
+    width: 400,
+    height: 300,
   },
   video: {
-    width: 640,
-    height: 480,
+    width: 400,
+    height: 300,
   },
 };
 

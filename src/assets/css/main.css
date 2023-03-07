@@ -38,19 +38,3 @@ video {
 
   transform: scaleX(-1);
 }
-
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  background-color: #FFF;
-  
-  opacity: 0.8;
-}
-
-footer p {
-  color: #333;
-  text-align: center;
-}

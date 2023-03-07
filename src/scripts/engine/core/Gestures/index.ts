@@ -7,22 +7,22 @@ import { gestures } from './mappedGestures';
 import fp from 'fingerpose';
 
 class Gestures {
-  video?: HTMLVideoElement;
-  drawer?: ICanvasDrawer;
-  detector?: any; // ! FIX ANY
-  gestureEstimator?: any; // ! FIX ANY
+  #video?: HTMLVideoElement;
+  #drawer?: ICanvasDrawer;
+  #detector?: any; // ! FIX ANY
+  #gestureEstimator?: any; // ! FIX ANY
 
-  actualGesture: AvailableGestures = '';
-  x: number = 0;
+  #actualGesture: AvailableGestures = '';
+  #x: number = 0;
 
   constructor({ context, video }: IGesturesProps) {
-    this.drawer = CanvasDrawer({ context });
-    this.video = video;
+    this.#drawer = CanvasDrawer({ context });
+    this.#video = video;
   }
 
   // * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-  createDetector = async () => {
+  #createDetector = async () => {
     return (window as any).handPoseDetection.createDetector(
       (window as any).handPoseDetection.SupportedModels.MediaPipeHands,
       {
@@ -35,18 +35,20 @@ class Gestures {
   };
 
   start = async () => {
-    this.gestureEstimator = new fp.GestureEstimator(gestures);
-    this.detector = await this.createDetector();
+    this.#gestureEstimator = new fp.GestureEstimator(gestures);
+    this.#detector = await this.#createDetector();
   };
 
-  getGesture = (): AvailableGestures => this.actualGesture;
-  getX = (): number => this.x;
+  getGesture = (): AvailableGestures => this.#actualGesture;
+  get x() {
+    return this.#x;
+  }
 
   render = async ({}: IRenderObjectProps) => {
-    if (!this.drawer || !this.video || !this.detector || !this.gestureEstimator) return;
+    if (!this.#drawer || !this.#video || !this.#detector || !this.#gestureEstimator) return;
 
     // get hand landmarks from video
-    const hands = await this.detector.estimateHands(this.video, {
+    const hands = await this.#detector.estimateHands(this.#video, {
       flipHorizontal: true,
     });
 
@@ -59,9 +61,9 @@ class Gestures {
         const color = config.landmarkColors[name];
 
         // The X of the player will be the "wrist" position
-        if (name === 'wrist') this.x = keypoint.x;
+        if (name === 'wrist') this.#x = keypoint.x;
 
-        this.drawer.point({
+        this.#drawer.point({
           x: keypoint.x,
           y: keypoint.y,
           radius: 3,
@@ -76,16 +78,16 @@ class Gestures {
         keypoint.z,
       ]); // ! FIX ANY
 
-      const predictions = this.gestureEstimator.estimate(keypoints3D, 9);
+      const predictions = this.#gestureEstimator.estimate(keypoints3D, 9);
 
       if (predictions.gestures.length > 0) {
         // find gesture with highest match score
         const result = predictions.gestures.reduce((p: any, c: any) => (p.score > c.score ? p : c)); // ! FIX ANY
         const found = result.name as AvailableGestures;
 
-        this.actualGesture = found;
+        this.#actualGesture = found;
       } else {
-        this.actualGesture = '';
+        this.#actualGesture = '';
       }
     }
   };

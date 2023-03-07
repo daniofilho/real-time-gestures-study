@@ -3,22 +3,22 @@ const track: ITrack = {
   coordinates: [
     {
       curvature: 0,
-      distance: 10, // short section for start/finish
+      distance: 5, // short section for start/finish
     },
     {
       curvature: 0,
       distance: 20,
     },
     {
-      curvature: 0,
-      distance: 25,
+      curvature: 1,
+      distance: 100,
     },
     {
       curvature: 0,
       distance: 150,
     },
     {
-      curvature: 0,
+      curvature: -1,
       distance: 200,
     },
     {
