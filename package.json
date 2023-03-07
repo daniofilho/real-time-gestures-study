@@ -4,7 +4,7 @@
   "description": "A study about controlling a website with hand gestures",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build --base=/estudo/real-time-gestures/",
+    "build": "tsc && vite build --base=/real-time-gestures-study/",
     "preview": "vite preview",
     "fast-push": "yarn build && git add . && git commit -m '.' && git push"
   },
