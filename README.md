@@ -1,6 +1,6 @@
 # A study with real time gestures
 
-## Work in progress...
+A study using Tensor Flow and Fingerpose to use hands to move and control a car.
 
 ## Usage
 
@@ -11,4 +11,7 @@
 `yarn preview` => Preview production build on a local server running on http://localhost:4173/;
 
 `yarn build` => Create production build on `/dist` folder;
- 
+
+# Reference
+
+[Base project](https://github.com/daniofilho/top-gear-study)
